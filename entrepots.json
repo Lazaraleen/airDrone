@@ -1,0 +1,72 @@
+[
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot A",
+      "marker-color": "#0000ff",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.30510575413709, -0.33335181750962306],
+      "type": "Point"
+    },
+    "id": 0
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot B",
+      "marker-color": "#ff0000",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.32708689909185, -0.3467019497672652],
+      "type": "Point"
+    },
+    "id": 1
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot C",
+      "marker-color": "#ff0000",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.30431079114095, -0.3660396672554498],
+      "type": "Point"
+    },
+    "id": 2
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot D",
+      "marker-color": "#0000ff",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.317138041047514, -0.3575459723712413],
+      "type": "Point"
+    },
+    "id": 3
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot E",
+      "marker-color": "#0000ff",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.291712929765225, -0.36976413932083574],
+      "type": "Point"
+    },
+    "id": 4
+  }
+]

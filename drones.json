@@ -1,0 +1,42 @@
+[
+    {
+      "id": "D0",
+      "name": "Athéna",
+      "speed": 15000,
+      "navette" : "A - B",
+      "depart" : "A",
+      "arrivee" : "B",
+      "actif" : "YES", 
+      "markerName" : "marker0"
+    },
+    {
+        "id": "D1",
+        "name": "Diane",
+        "speed": 12000,
+        "navette" : "A - C", 
+        "depart" : "A",
+        "arrivee" : "C",
+        "actif" : "YES", 
+        "markerName" : "marker1"
+    },
+    {
+        "id": "D2",
+        "name": "Héra",
+        "speed": 8000,
+        "navette" : "D - E",
+        "depart" : "D",
+        "arrivee" : "E",
+        "actif" : "YES", 
+        "markerName" : "marker2"
+    },
+    {
+        "id": "D3",
+        "name": "Téthys",
+        "speed": 4000,
+        "navette" : "B - E",
+        "depart" : "B",
+        "arrivee" : "E",
+        "actif" : "NO", 
+        "markerName" : ""
+    }
+]

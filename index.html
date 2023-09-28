@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirDrone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
+    <script type="text/javascript" src="../MovingMarker.js"></script>
+    <script type="module" src="app2.js" defer></script>
+</head>
+<body>
+    <section class="carte">
+        <img src="./images/drone.jpg" class="logo" alt="Logo AirDrone">
+        <h1>Suivi des drones</h1>
+        <div id="map"></div>
+    </section>
+    <section class="listeActifs">
+        <a href="./gestion.html">
+            <div class="lienGestion">
+                <img src="./images/drone2.jpg" alt="drone bouton">
+                <p>Gestion des drones</p>
+            </div>
+        </a>
+        <article class="listeDronesActifs">
+            <h2>Liste des drones actifs</h2>
+            <div class="dronesActifs">
+                <div class="title">
+                    <p>Nom</p>
+                    <p>Temps de trajet</p>
+                    <p>Navette</p>
+                </div>
+            </div>
+            <div class="suivi"></div>
+        </article>
+    </section>
+    
+</body>
+</html>
