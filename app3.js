@@ -1,5 +1,8 @@
 const response2 = await fetch("drones.json");
-const drones = await response2.json();
+const dronesJSON = await response2.json();
+
+const drones = dronesJSON;
+localStorage.setItem("drones", JSON.stringify(drones));
 
 // **************************************************************** Liste des Drones Actifs *****************************************************
 
@@ -106,46 +109,43 @@ drones.forEach((e) => {
     modif(e);
   });
 
-  // Ajoutez le bouton de drone à la liste des boutons d'origine
   originalDroneButtons.push(droneButton);
 });
 
 function modif(event) {
+  const selectedDrone = drones.find((drone) => drone.name === event.target.innerText);
+  const id = selectedDrone.id;
+
   const divItem = document.createElement("div");
   const h3Name = document.createElement("h3");
   const h3Speed = document.createElement("h3");
-  const h3Navette = document.createElement("h3");
+  // const h3Navette = document.createElement("h3");
   const h3Actif = document.createElement("h3");
+  const formName = document.createElement("form");
+  const formSpeed = document.createElement("form");
+  const formActif = document.createElement("form");
 
-  h3Name.innerText = "Name : " + event.name;
-  h3Speed.innerText = "Speed : ";
-  h3Navette.innerText = "Navette : ";
-  h3Actif.innerText = "Actif ? : ";
+  h3Name.innerText = "Name : " + selectedDrone.name;
+  formName.innerHTML = `<input type="text" class="formVar" id="lname" value=${selectedDrone.name}><br><button type="submit" id="newName" class="submitButton">Submit</button>`;
+  h3Speed.innerText = "Speed : " + selectedDrone.speed + " s";
+  formSpeed.innerHTML = `<input type="text" class="formVar" id="lspeed" value=${selectedDrone.speed}><br><input type="submit" value="Submit" class="submitButton">`;
+  // h3Navette.innerText = "Navette : " + selectedDrone.navette;
+  h3Actif.innerText = "Actif ? : " + selectedDrone.actif;
+  formActif.innerHTML = `<input type="text" class="formVar" id="lactif" value=${selectedDrone.actif}><br><input type="submit" value="Submit" class="submitButton">`;
+
+  // const newName = document.getElementById('newName');
+  // const lname = document.getElementById('lname');
+
+  // newName.onclick = function(){
+  //   drones[id].name = lname.value;
+  // };
 
   divItem.appendChild(h3Name);
+  divItem.appendChild(formName);
   divItem.appendChild(h3Speed);
-  divItem.appendChild(h3Navette);
+  divItem.appendChild(formSpeed);
+  // divItem.appendChild(h3Navette);
   divItem.appendChild(h3Actif);
+  divItem.appendChild(formActif);
   divDrone.appendChild(divItem);
 }
-
-// Modele:
-
-// <h3>Changement d'Username</h3>
-// {/* Tout le monde n'a pas un userName */}
-// {userProfile.userName ? (<p> Votre username actuel: {userProfile.userName}</p>) : (<p> Pas d'username actuellement</p>)}
-// {/* Faire un form pour récupérer le nouveau username */}
-// <form onSubmit={userNameChange}>
-//     <div className="input-wrapper">
-//         <label htmlFor="username">Nouveau Username :</label>
-//         <input
-//         type="text"
-//         id="username"
-//         value={useName}
-//         onChange={(e) => setUseName(e.target.value)}
-//         />
-//     </div>
-//     <button className="sign-in-button" id="connect" type="submit">
-//         <span>Submit</span>
-//     </button>
-// </form>
