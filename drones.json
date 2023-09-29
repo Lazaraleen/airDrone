@@ -36,7 +36,17 @@
         "navette" : "E - F",
         "depart" : "E",
         "arrivee" : "F",
-        "actif" : "NO", 
+        "actif" : "YES", 
         "markerName" : "marker3"
+    },
+    {
+        "id": "4",
+        "name": "Artémis",
+        "speed": 7000,
+        "navette" : "F - G",
+        "depart" : "F",
+        "arrivee" : "G",
+        "actif" : "YES", 
+        "markerName" : "marker4"
     }
 ]

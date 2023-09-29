@@ -3,6 +3,7 @@
     "type": "Feature",
     "properties": {
       "name": "Entrepot A",
+      "letter": "A",
       "marker-color": "#0000ff",
       "marker-size": "medium",
       "marker-symbol": "circle"
@@ -17,6 +18,7 @@
     "type": "Feature",
     "properties": {
       "name": "Entrepot B",
+      "letter": "B",
       "marker-color": "#ff0000",
       "marker-size": "medium",
       "marker-symbol": "circle"
@@ -31,6 +33,7 @@
     "type": "Feature",
     "properties": {
       "name": "Entrepot C",
+      "letter": "C",
       "marker-color": "#ff0000",
       "marker-size": "medium",
       "marker-symbol": "circle"
@@ -45,6 +48,7 @@
     "type": "Feature",
     "properties": {
       "name": "Entrepot D",
+      "letter": "D",
       "marker-color": "#0000ff",
       "marker-size": "medium",
       "marker-symbol": "circle"
@@ -59,6 +63,7 @@
     "type": "Feature",
     "properties": {
       "name": "Entrepot E",
+      "letter": "E",
       "marker-color": "#0000ff",
       "marker-size": "medium",
       "marker-symbol": "circle"
@@ -73,6 +78,7 @@
     "type": "Feature",
     "properties": {
       "name": "Entrepot F",
+      "letter": "F",
       "marker-color": "#0000ff",
       "marker-size": "medium",
       "marker-symbol": "circle"
@@ -82,5 +88,20 @@
       "type": "Point"
     },
     "id": 5
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot G",
+      "letter": "G",
+      "marker-color": "#0000ff",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.316946084065165, -0.3709880169306814],
+      "type": "Point"
+    },
+    "id": 6
   }
 ]

@@ -180,7 +180,7 @@ for (let i = 0; i < drones.length; i++) {
 
     nameDrone.innerText = drones[i].name;
     speed.innerText = drones[i].speed / 1000 + " secondes";
-    destination.innerText = drones[i].navette;
+    destination.innerText = drones[i].depart + " - " + drones[i].arrivee;
 
     datas.appendChild(nameDrone);
     datas.appendChild(speed);

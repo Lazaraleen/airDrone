@@ -1,10 +1,7 @@
-// Copie du app3 pour modifications...
-
 const response2 = await fetch("drones.json");
 const dronesJSON = await response2.json();
 
 let drones = dronesJSON;
-// localStorage.setItem("drones", JSON.stringify(drones));
 if (localStorage !== null) {
   const storedDrones = localStorage.getItem("drones");
 
@@ -23,10 +20,11 @@ divDrone.classList.add("divDrone");
 modalbox.appendChild(image);
 modalbox.appendChild(divDrone);
 
-// **************************************************************** Liste des Drones Actifs *****************************************************
+// **************************************************************** Liste des Drones *****************************************************
 
 const listeActifs = document.querySelector(".listeDrones");
 
+// Affiche la liste des drones et leurs données
 function listeDrone() {
   for (let i = 0; i < drones.length; i++) {
     const dataDrone = document.createElement("div");
@@ -45,6 +43,7 @@ function listeDrone() {
     depart.innerText = drones[i].depart;
     arrivee.innerText = drones[i].arrivee;
     actif.innerText = drones[i].actif;
+    // Affiche YES en vert, sinon c'est en rouge
     drones[i].actif === "YES"
       ? (actif.style.color = "green")
       : (actif.style.color = "red");
@@ -110,6 +109,8 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
+
+// Affiche les boutons avec le nom des drones
 function buttonDrone() {
   originalDroneButtons.length = 0;  // sinon à chaque fermeture puis réouverture de la modale, les boutons sont rajoutés à la précédente liste
   drones.forEach((e) => {
@@ -122,8 +123,7 @@ function buttonDrone() {
       e.preventDefault();
       divDrone.innerHTML = "";
       modif(e);
-    });
-  
+    });  
     originalDroneButtons.push(droneButton);
   });
 }
@@ -137,17 +137,22 @@ function modif(event) {
   const id = selectedDrone.id;
 
   // Création du visuel de la modale pour permettre à l'utilisateur de modifier ses données pour les drones
-
   const divItem = document.createElement("div");
   const h3Name = document.createElement("h3");
   const h3Speed = document.createElement("h3");
   const h3Actif = document.createElement("h3");
+  const h3Depart = document.createElement("h3");
+  const h3Arrivee = document.createElement("h3");
   const formName = document.createElement("form");
   const formSpeed = document.createElement("form");
   const formActif = document.createElement("form");
+  const formDepart = document.createElement("form");
+  const formArrivee = document.createElement("form");
   const inputName = document.createElement("input");
   const inputSpeed = document.createElement("input");
   const inputActif = document.createElement("input");
+  const inputDepart= document.createElement("input");
+  const inputArrivee = document.createElement("input");
   const buttonSubmit = document.createElement("button");
 
   h3Name.innerText = "Name : " + selectedDrone.name;
@@ -156,11 +161,24 @@ function modif(event) {
   inputName.classList.add("formVar");
   inputName.setAttribute("id", "lname");
 
+  // Les différents inputs où l'utilisateur peut faire des modification
   h3Speed.innerText = "Speed : " + selectedDrone.speed + " s";
   formSpeed.classList.add("form");
   inputSpeed.type = "text";
   inputSpeed.classList.add("formVar");
   inputSpeed.setAttribute("id", "lspeed");
+
+  h3Depart.innerText = "Entrepot de départ : " + selectedDrone.depart;
+  formDepart.classList.add("form");
+  inputDepart.type = "text";
+  inputDepart.classList.add("formVar");
+  inputDepart.setAttribute("id", "ldepart");
+
+  h3Arrivee.innerText = "Entrepot d'arrivée : " + selectedDrone.arrivee;
+  formArrivee.classList.add("form");
+  inputArrivee.type = "text";
+  inputArrivee.classList.add("formVar");
+  inputArrivee.setAttribute("id", "larrivee");
   
   h3Actif.innerText = "Actif ? : " + selectedDrone.actif;
   formActif.classList.add("form");
@@ -181,15 +199,22 @@ function modif(event) {
   divItem.appendChild(h3Actif);
   formActif.appendChild(inputActif);
   divItem.appendChild(formActif);
+  divItem.appendChild(h3Depart);
+  formDepart.appendChild(inputDepart);
+  divItem.appendChild(formDepart);
+  divItem.appendChild(h3Arrivee);
+  formArrivee.appendChild(inputArrivee);
+  divItem.appendChild(formArrivee);
   divItem.appendChild(buttonSubmit);
   divDrone.appendChild(divItem);
 
-  // Récupération et modification des données
-
+  // Récupération et modification des données sur le localStorage
   let newSubmitButton = document.getElementById("newSubmitButton");
   const lname = document.getElementById("lname");
   const lspeed = document.getElementById("lspeed");
   const lactif = document.getElementById("lactif");
+  const ldepart = document.getElementById("ldepart");
+  const larrivee = document.getElementById("larrivee");
 
   newSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
@@ -203,6 +228,16 @@ function modif(event) {
       drones[id].speed = newSpeed;
       h3Speed.innerText = "Speed : " + newSpeed + " s";
     };
+    if (ldepart.value != "") {
+      const newDepart = ldepart.value;
+      drones[id].depart = newDepart;
+      h3Depart.innerText = "Entrepot de départ : " + newDepart;
+    };
+    if (larrivee.value != "") {
+      const newArrivee = larrivee.value;
+      drones[id].arrivee = newArrivee;
+      h3Arrivee.innerText = "Entrepot d'arrivée : " + newArrivee;
+    };
     if (lactif.value != "") {
       const newActif = lactif.value;
       drones[id].actif = newActif;
@@ -214,5 +249,4 @@ function modif(event) {
     listeActifs.innerHTML = "";
     listeDrone();
   });
-
 }
