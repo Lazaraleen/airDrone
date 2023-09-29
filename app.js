@@ -1,3 +1,5 @@
+// Copie du app3 pour modifications...
+
 const response2 = await fetch("drones.json");
 const dronesJSON = await response2.json();
 
@@ -75,17 +77,17 @@ const openModal = function (e) {
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
 
+  const divDrone = modal.querySelector(".divDrone");
   divDrone.innerHTML = ""; // Nettoyez la divDrone
-  console.log(originalDroneButtons);
-    originalDroneButtons.forEach((button) => {
-      divDrone.appendChild(button);
-    });
+  originalDroneButtons.forEach((button) => {
+    divDrone.appendChild(button);
+  });
 };
 
 const closeModal = function (e) {
   if (modal === null) return;
   e.preventDefault();
-  modal.style.display = "none";  
+  modal.style.display = "none";
   modal.removeEventListener("click", closeModal);
   modal.querySelector("js-modal-close").addEventListener("click", closeModal);
   modal
@@ -108,7 +110,7 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-function buttonDrone() {  
+function buttonDrone() {
   originalDroneButtons.length = 0;  // sinon à chaque fermeture puis réouverture de la modale, les boutons sont rajoutés à la précédente liste
   drones.forEach((e) => {
     const droneButton = document.createElement("button");
@@ -120,8 +122,8 @@ function buttonDrone() {
       e.preventDefault();
       divDrone.innerHTML = "";
       modif(e);
-    });  
-    
+    });
+  
     originalDroneButtons.push(droneButton);
   });
 }
@@ -134,6 +136,8 @@ function modif(event) {
   );
   const id = selectedDrone.id;
 
+  // Création du visuel de la modale pour permettre à l'utilisateur de modifier ses données pour les drones
+
   const divItem = document.createElement("div");
   const h3Name = document.createElement("h3");
   const h3Speed = document.createElement("h3");
@@ -142,93 +146,68 @@ function modif(event) {
   const formSpeed = document.createElement("form");
   const formActif = document.createElement("form");
   const inputName = document.createElement("input");
-  const buttonName = document.createElement("button");
   const inputSpeed = document.createElement("input");
-  const buttonSpeed = document.createElement("button");
   const inputActif = document.createElement("input");
-  const buttonActif = document.createElement("button");
+  const buttonSubmit = document.createElement("button");
 
   h3Name.innerText = "Name : " + selectedDrone.name;
   formName.classList.add("form");
   inputName.type = "text";
   inputName.classList.add("formVar");
   inputName.setAttribute("id", "lname");
-  buttonName.classList.add("submitButton");
-  buttonName.setAttribute("id", "newNameButton");
-  buttonName.innerText = "Submit";
-  // formName.innerHTML = `<input type="text" class="formVar" id="lname">
-  //     <button id="newNameButton" class="submitButton">Submit</button>`;
+
   h3Speed.innerText = "Speed : " + selectedDrone.speed + " s";
   formSpeed.classList.add("form");
   inputSpeed.type = "text";
   inputSpeed.classList.add("formVar");
   inputSpeed.setAttribute("id", "lspeed");
-  buttonSpeed.classList.add("submitButton");
-  buttonSpeed.setAttribute("id", "newSpeedButton");
-  buttonSpeed.innerText = "Submit";
-  // formSpeed.innerHTML = `<input type="text" class="formVar" id="lspeed"><br><input type="submit" value="Submit" class="submitButton">`;
+  
   h3Actif.innerText = "Actif ? : " + selectedDrone.actif;
   formActif.classList.add("form");
   inputActif.type = "text";
   inputActif.classList.add("formVar");
   inputActif.setAttribute("id", "lactif");
-  buttonActif.classList.add("submitButton");
-  buttonActif.setAttribute("id", "newActifButton");
-  buttonActif.innerText = "Submit";
-  // formActif.innerHTML = `<input type="text" class="formVar" id="lactif"><br><input type="submit" value="Submit" class="submitButton">`;
+  
+  buttonSubmit.classList.add("submitButton2");
+  buttonSubmit.setAttribute("id", "newSubmitButton");
+  buttonSubmit.innerText = "Submit";
 
   divItem.appendChild(h3Name);
   formName.appendChild(inputName);
-  formName.appendChild(buttonName);
   divItem.appendChild(formName);
   divItem.appendChild(h3Speed);
   formSpeed.appendChild(inputSpeed);
-  formSpeed.appendChild(buttonSpeed);
   divItem.appendChild(formSpeed);
   divItem.appendChild(h3Actif);
   formActif.appendChild(inputActif);
-  formActif.appendChild(buttonActif);
   divItem.appendChild(formActif);
+  divItem.appendChild(buttonSubmit);
   divDrone.appendChild(divItem);
 
-  let newNameButton = document.getElementById("newNameButton");
+  // Récupération et modification des données
+
+  let newSubmitButton = document.getElementById("newSubmitButton");
   const lname = document.getElementById("lname");
-
-  newNameButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const newName = lname.value;
-    drones[id].name = newName;
-    h3Name.innerText = "Nom : " + newName;
-    localStorage.setItem("drones", JSON.stringify(drones));
-    divDrone.innerHTML = "";
-    buttonDrone();
-    listeActifs.innerHTML = "";
-    listeDrone();
-  });
-
-  let newSpeedButton = document.getElementById("newSpeedButton");
   const lspeed = document.getElementById("lspeed");
-
-  newSpeedButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const newSpeed = lspeed.value;
-    drones[id].speed = newSpeed;
-    h3Speed.innerText = "Nom : " + newSpeed;
-    localStorage.setItem("drones", JSON.stringify(drones));
-    divDrone.innerHTML = "";
-    buttonDrone();
-    listeActifs.innerHTML = "";
-    listeDrone();
-  });
-
-  let newActifButton = document.getElementById("newActifButton");
   const lactif = document.getElementById("lactif");
 
-  newActifButton.addEventListener("click", (e) => {
+  newSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const newActif = lactif.value;
-    drones[id].actif = newActif;
-    h3Actif.innerText = "Nom : " + newActif;
+    if (lname.value != "") {
+      const newName = lname.value;
+      drones[id].name = newName;
+      h3Name.innerText = "Nom : " + newName;
+    };
+    if (lspeed.value != "") {
+      const newSpeed = lspeed.value;
+      drones[id].speed = newSpeed;
+      h3Speed.innerText = "Speed : " + newSpeed + " s";
+    };
+    if (lactif.value != "") {
+      const newActif = lactif.value;
+      drones[id].actif = newActif;
+      h3Actif.innerText = "Actif ? : " + newActif;
+    };
     localStorage.setItem("drones", JSON.stringify(drones));
     divDrone.innerHTML = "";
     buttonDrone();
