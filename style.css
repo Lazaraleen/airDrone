@@ -261,6 +261,12 @@ form {
     margin-bottom: 30px;
 }
 
+.form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
 .submitButton {
     margin-left: 10px;
     padding: 0 5px;

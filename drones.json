@@ -33,10 +33,10 @@
         "id": "3",
         "name": "Téthys",
         "speed": 4000,
-        "navette" : "B - E",
-        "depart" : "B",
-        "arrivee" : "E",
+        "navette" : "E - F",
+        "depart" : "E",
+        "arrivee" : "F",
         "actif" : "NO", 
-        "markerName" : ""
+        "markerName" : "marker3"
     }
 ]

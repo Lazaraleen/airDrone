@@ -36,7 +36,7 @@
       "marker-symbol": "circle"
     },
     "geometry": {
-      "coordinates": [43.30431079114095, -0.3660396672554498],
+      "coordinates": [43.30573862053765, -0.37590057275227196],
       "type": "Point"
     },
     "id": 2
@@ -68,5 +68,19 @@
       "type": "Point"
     },
     "id": 4
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "name": "Entrepot F",
+      "marker-color": "#0000ff",
+      "marker-size": "medium",
+      "marker-symbol": "circle"
+    },
+    "geometry": {
+      "coordinates": [43.298774033863964, -0.34695680285483377],
+      "type": "Point"
+    },
+    "id": 5
   }
 ]
