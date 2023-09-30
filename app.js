@@ -162,7 +162,7 @@ function modif(event) {
   inputName.setAttribute("id", "lname");
 
   // Les différents inputs où l'utilisateur peut faire des modification
-  h3Speed.innerText = "Speed : " + selectedDrone.speed + " s";
+  h3Speed.innerText = "Speed : " + selectedDrone.speed + " ms";
   formSpeed.classList.add("form");
   inputSpeed.type = "text";
   inputSpeed.classList.add("formVar");
@@ -226,7 +226,7 @@ function modif(event) {
     if (lspeed.value != "") {
       const newSpeed = lspeed.value;
       drones[id].speed = newSpeed;
-      h3Speed.innerText = "Speed : " + newSpeed + " s";
+      h3Speed.innerText = "Speed : " + newSpeed + " ms";
     };
     if (ldepart.value != "") {
       const newDepart = ldepart.value;
